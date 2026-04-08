@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# DuckDB & Dados
+*.db
+*.db.wal
+*.parquet
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
