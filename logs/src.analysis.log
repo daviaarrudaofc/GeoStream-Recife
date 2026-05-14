@@ -1,0 +1,66 @@
+2026-05-13 08:39:27 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 08:39:27 - src.analysis - INFO - Computing density statistics
+2026-05-13 08:39:27 - src.analysis - ERROR - Error computing density statistics: Binder Error: GROUP BY clause cannot contain aggregates!
+
+LINE 3:                     COUNT(*) as total_facilities,
+                            ^
+2026-05-13 08:40:17 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 08:40:17 - src.analysis - INFO - Computing density statistics
+2026-05-13 08:40:17 - src.analysis - ERROR - Error computing density statistics: Binder Error: Referenced column "hex_id" not found in FROM clause!
+Candidate bindings: "nome"
+
+LINE 11:                     GROUP BY hex_id
+                                      ^
+2026-05-13 08:41:21 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 08:41:21 - src.analysis - INFO - Computing density statistics
+2026-05-13 08:41:21 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-13 08:41:23 - src.analysis - INFO - Clustering complete. Inertia: 2.41
+2026-05-13 08:43:00 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 09:24:42 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 10:16:37 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 10:16:37 - src.analysis - INFO - Computing density statistics
+2026-05-13 10:16:37 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-13 10:16:46 - src.analysis - INFO - Clustering complete. Inertia: 2.41
+2026-05-13 10:17:04 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 23:43:58 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 23:43:58 - src.analysis - INFO - Computing density statistics
+2026-05-13 23:43:58 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-13 23:44:01 - src.analysis - INFO - Clustering complete. Inertia: 2.41
+2026-05-13 23:44:11 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 23:57:24 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-13 23:57:24 - src.analysis - INFO - Computing density statistics
+2026-05-13 23:57:24 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-13 23:57:26 - src.analysis - INFO - Clustering complete. Inertia: 2.41
+2026-05-13 23:57:31 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:00:56 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:00:59 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:01:10 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:01:18 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:01:41 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:01:43 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:02:12 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:02:14 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:07:35 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:07:38 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:08:40 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:08:48 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:09:08 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:09:08 - src.analysis - INFO - Computing density statistics
+2026-05-14 00:09:08 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-14 00:09:10 - src.analysis - INFO - Clustering complete. Inertia: 10.39
+2026-05-14 00:12:56 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:12:56 - src.analysis - INFO - Computing density statistics
+2026-05-14 00:12:56 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-14 00:12:59 - src.analysis - INFO - Clustering complete. Inertia: 10.39
+2026-05-14 00:14:22 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:14:22 - src.analysis - INFO - Computing density statistics
+2026-05-14 00:14:22 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-14 00:14:24 - src.analysis - INFO - Clustering complete. Inertia: 10.39
+2026-05-14 00:16:15 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:16:15 - src.analysis - INFO - Computing density statistics
+2026-05-14 00:16:15 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-14 00:16:17 - src.analysis - INFO - Clustering complete. Inertia: 10.39
+2026-05-14 00:19:39 - src.analysis - INFO - GeoAnalyzer initialized
+2026-05-14 00:19:39 - src.analysis - INFO - Computing density statistics
+2026-05-14 00:19:39 - src.analysis - INFO - Running K-means clustering with 3 clusters
+2026-05-14 00:19:41 - src.analysis - INFO - Clustering complete. Inertia: 10.39

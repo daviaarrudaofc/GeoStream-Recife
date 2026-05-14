@@ -1,0 +1,121 @@
+name: GeoStream CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 0'  # Weekly Sunday check
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.9', '3.10', '3.11']
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Cache pip
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov flake8 black isort
+    
+    - name: Lint with flake8
+      run: |
+        flake8 src/ api.py cli.py --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/ api.py cli.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    
+    - name: Check code format with black
+      run: black --check src/ api.py cli.py || true
+    
+    - name: Check imports with isort
+      run: isort --check-only src/ api.py cli.py || true
+    
+    - name: Run tests with coverage
+      run: |
+        pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        flags: unittests
+        fail_ci_if_error: false
+
+  build-docker:
+    needs: test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    
+    - name: Build Docker image
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        push: false
+        tags: geostream:latest
+        cache-from: type=gha
+        cache-to: type=gha,mode=max
+    
+    - name: Run security scan
+      run: |
+        pip install trivy
+        trivy image --severity HIGH,CRITICAL geostream:latest || true
+
+  security:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run Bandit security check
+      run: |
+        pip install bandit
+        bandit -r src/ api.py cli.py -f json -o bandit-report.json || true
+    
+    - name: Upload security report
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-report
+        path: bandit-report.json
+
+  performance:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install memory-profiler py-spy
+    
+    - name: Run performance checks
+      run: |
+        python -m memory_profiler src/geo_processor.py || true

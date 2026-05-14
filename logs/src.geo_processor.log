@@ -1,0 +1,108 @@
+2026-05-13 08:38:46 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 08:38:46 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 08:38:46 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 08:38:46 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 08:38:46 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 08:38:46 - src.geo_processor - ERROR - Error converting hex 8881839a67fffff: cell_to_boundary() got an unexpected keyword argument 'geo_json'
+2026-05-13 08:39:27 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 08:39:27 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 08:39:27 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 08:39:27 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 08:39:27 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 08:39:27 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 08:40:17 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 08:40:17 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 08:40:17 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 08:40:17 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 08:40:17 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 08:40:17 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 08:41:21 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 08:41:21 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 08:41:21 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 08:41:21 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 08:41:21 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 08:41:21 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 08:43:00 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 08:43:00 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 08:44:17 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 08:44:17 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 09:24:42 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 09:24:42 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 10:16:37 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 10:16:37 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 10:16:37 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 10:16:37 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 10:16:37 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 10:16:37 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 10:17:04 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 10:17:04 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 23:43:58 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 23:43:58 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 23:43:58 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 23:43:58 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 23:43:58 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 23:43:58 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 23:44:11 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 23:44:11 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 23:57:24 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 23:57:24 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-13 23:57:24 - src.geo_processor - INFO - Processing hexagons...
+2026-05-13 23:57:24 - src.geo_processor - INFO - Created 7 hexagons
+2026-05-13 23:57:24 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-13 23:57:24 - src.geo_processor - INFO - GeoDataFrame created with 7 features
+2026-05-13 23:57:31 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-13 23:57:31 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:00:56 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:00:56 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:00:59 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:00:59 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:01:10 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:01:10 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:01:18 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:01:18 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:01:41 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:01:41 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:01:43 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:01:43 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:02:12 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:02:12 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:02:14 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:02:14 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:07:35 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:07:35 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:07:38 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:07:38 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:08:40 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:08:40 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:08:48 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:08:48 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:09:08 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:09:08 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:09:08 - src.geo_processor - INFO - Processing hexagons...
+2026-05-14 00:09:08 - src.geo_processor - INFO - Created 24 hexagons
+2026-05-14 00:09:08 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-14 00:09:08 - src.geo_processor - INFO - GeoDataFrame created with 24 features
+2026-05-14 00:12:56 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:12:56 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:12:56 - src.geo_processor - INFO - Processing hexagons...
+2026-05-14 00:12:56 - src.geo_processor - INFO - Created 24 hexagons
+2026-05-14 00:12:56 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-14 00:12:56 - src.geo_processor - INFO - GeoDataFrame created with 24 features
+2026-05-14 00:14:22 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:14:22 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:14:22 - src.geo_processor - INFO - Processing hexagons...
+2026-05-14 00:14:22 - src.geo_processor - INFO - Created 24 hexagons
+2026-05-14 00:14:22 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-14 00:14:22 - src.geo_processor - INFO - GeoDataFrame created with 24 features
+2026-05-14 00:16:14 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:16:14 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:16:14 - src.geo_processor - INFO - Processing hexagons...
+2026-05-14 00:16:14 - src.geo_processor - INFO - Created 24 hexagons
+2026-05-14 00:16:14 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-14 00:16:15 - src.geo_processor - INFO - GeoDataFrame created with 24 features
+2026-05-14 00:19:39 - src.geo_processor - DEBUG - H3 function registered in DuckDB
+2026-05-14 00:19:39 - src.geo_processor - INFO - GeoProcessor initialized with H3 resolution 8
+2026-05-14 00:19:39 - src.geo_processor - INFO - Processing hexagons...
+2026-05-14 00:19:39 - src.geo_processor - INFO - Created 24 hexagons
+2026-05-14 00:19:39 - src.geo_processor - INFO - Creating GeoDataFrame...
+2026-05-14 00:19:39 - src.geo_processor - INFO - GeoDataFrame created with 24 features
