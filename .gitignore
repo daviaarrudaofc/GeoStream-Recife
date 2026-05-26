@@ -9,6 +9,8 @@ venv/
 *.db
 *.db.wal
 *.parquet
+logs/
+outputs/
 .ipynb_checkpoints/
 
 # VS Code

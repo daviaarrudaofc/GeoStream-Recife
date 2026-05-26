@@ -1,16 +1,18 @@
 """FastAPI REST API for GeoStream."""
-from typing import List, Optional, Dict
+
+from typing import Dict, List, Optional
+
+import uvicorn
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import HTMLResponse
-import uvicorn
 from pydantic import BaseModel
 
+from src.analysis import GeoAnalyzer
+from src.config import API
 from src.data_loader import DataLoader
 from src.geo_processor import GeoProcessor
-from src.analysis import GeoAnalyzer
-from src.visualizer import Visualizer
-from src.config import API
 from src.logger import setup_logger
+from src.visualizer import Visualizer
 
 logger = setup_logger(__name__)
 
@@ -18,7 +20,7 @@ logger = setup_logger(__name__)
 app = FastAPI(
     title="GeoStream Recife API",
     description="Advanced geospatial analysis API for Recife public facilities",
-    version="1.0.0"
+    version="1.0.0",
 )
 
 # Global instances
@@ -37,6 +39,7 @@ async def startup():
     df = loader.load_data()
     loader.setup_duckdb_table(df)
     processor = GeoProcessor(loader.get_connection())
+    processor.process_hexagons()
     analyzer = GeoAnalyzer(loader.get_connection())
     visualizer = Visualizer()
     logger.info("API initialized successfully")
@@ -45,6 +48,7 @@ async def startup():
 # Pydantic models
 class Facility(BaseModel):
     """Facility data model."""
+
     nome: str
     latitude: float
     longitude: float
@@ -52,6 +56,7 @@ class Facility(BaseModel):
 
 class HexagonInfo(BaseModel):
     """Hexagon information model."""
+
     hex_id: str
     densidade: int
     equipamentos: List[str]
@@ -59,6 +64,7 @@ class HexagonInfo(BaseModel):
 
 class ClusterAnalysisResult(BaseModel):
     """Cluster analysis result model."""
+
     n_clusters: int
     inertia: float
     cluster_sizes: Dict[int, int]
@@ -80,10 +86,10 @@ async def root():
             </style>
         </head>
         <body>
-            <h1>🌍 GeoStream Recife API</h1>
+            <h1>GeoStream Recife API</h1>
             <p>Advanced geospatial analysis for Recife public facilities</p>
             
-            <h2>📍 Available Endpoints</h2>
+            <h2>Available Endpoints</h2>
             <div class="endpoint">
                 <h3><code>GET /facilities</code></h3>
                 <p>List all facilities</p>
@@ -118,7 +124,7 @@ async def get_facilities():
     """Get all facilities."""
     try:
         df = loader.conn.execute("SELECT nome, lat as latitude, lon as longitude FROM pontos").df()
-        return df.to_dict('records')
+        return df.to_dict("records")
     except Exception as e:
         logger.error(f"Error fetching facilities: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -140,7 +146,7 @@ async def get_hexagons():
     """Get H3 hexagon density analysis."""
     try:
         df_h3 = processor.process_hexagons()
-        return df_h3.to_dict('records')
+        return df_h3.to_dict("records")
     except Exception as e:
         logger.error(f"Error processing hexagons: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -151,13 +157,12 @@ async def get_hexagon_info(hex_id: str):
     """Get information about a specific hexagon."""
     try:
         lat, lon = processor.get_hex_center(hex_id)
-        area = processor.get_hex_center(hex_id)
         neighbors = processor.get_hex_neighbors(hex_id)
-        
+
         return {
             "hex_id": hex_id,
             "center": {"latitude": lat, "longitude": lon},
-            "neighbors": neighbors
+            "neighbors": neighbors,
         }
     except Exception as e:
         logger.error(f"Error fetching hexagon info: {e}")
@@ -179,7 +184,7 @@ async def get_statistics():
 async def get_clustering(n_clusters: int = Query(3, ge=2, le=10)):
     """
     Get K-means clustering analysis.
-    
+
     Args:
         n_clusters: Number of clusters (2-10)
     """
@@ -189,7 +194,7 @@ async def get_clustering(n_clusters: int = Query(3, ge=2, le=10)):
             "n_clusters": result["n_clusters"],
             "inertia": result["inertia"],
             "cluster_sizes": result["cluster_sizes"],
-            "centers": result["centers"].tolist()
+            "centers": result["centers"].tolist(),
         }
     except Exception as e:
         logger.error(f"Error in clustering: {e}")
@@ -200,13 +205,13 @@ async def get_clustering(n_clusters: int = Query(3, ge=2, le=10)):
 async def get_accessibility(max_distance_km: float = Query(2.0, ge=0.5, le=10.0)):
     """
     Get accessibility index.
-    
+
     Args:
         max_distance_km: Maximum distance threshold in kilometers
     """
     try:
         result = analyzer.accessibility_index(max_distance_km=max_distance_km)
-        return result.to_dict('records')
+        return result.to_dict("records")
     except Exception as e:
         logger.error(f"Error computing accessibility: {e}")
         raise HTTPException(status_code=500, detail=str(e))
@@ -215,18 +220,8 @@ async def get_accessibility(max_distance_km: float = Query(2.0, ge=0.5, le=10.0)
 @app.get("/health")
 async def health_check():
     """Health check endpoint."""
-    return {
-        "status": "healthy",
-        "service": "GeoStream Recife API",
-        "version": "1.0.0"
-    }
+    return {"status": "healthy", "service": "GeoStream Recife API", "version": "1.0.0"}
 
 
 if __name__ == "__main__":
-    uvicorn.run(
-        app,
-        host=API.HOST,
-        port=API.PORT,
-        reload=API.RELOAD,
-        log_level=API.LOG_LEVEL
-    )
+    uvicorn.run(app, host=API.HOST, port=API.PORT, reload=API.RELOAD, log_level=API.LOG_LEVEL)
