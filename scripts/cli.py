@@ -41,7 +41,9 @@ def process(csv_path):
         # Visualize
         click.echo("Creating visualizations...")
         visualizer = Visualizer()
-        fig = visualizer.create_choropleth_map(gdf, output_file=Path("outputs/choropleth_map.html"))
+        fig = visualizer.create_choropleth_map(
+            gdf, output_file=visualizer.OUTPUT_DIR / "choropleth_map.html"
+        )
 
         # Show map
         visualizer.show(fig)
@@ -75,7 +77,7 @@ def cluster(csv_path, n_clusters):
         click.echo("Creating cluster map...")
         visualizer = Visualizer()
         fig = visualizer.create_cluster_map(
-            result["dataframe"], output_file=Path("outputs/cluster_map.html")
+            result["dataframe"], output_file=visualizer.OUTPUT_DIR / "cluster_map.html"
         )
 
         visualizer.show(fig)
@@ -129,7 +131,7 @@ def api():
     from src.config import API
 
     click.echo(f"Starting API on {API.HOST}:{API.PORT}")
-    uvicorn.run("api:app", host=API.HOST, port=API.PORT, reload=API.RELOAD)
+    uvicorn.run("scripts.api:app", host=API.HOST, port=API.PORT, reload=API.RELOAD)
 
 
 @cli.command()

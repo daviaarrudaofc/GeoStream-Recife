@@ -2,7 +2,7 @@
 GeoStream Recife - Legacy entry point
 
 This file maintains backwards compatibility while using the new modular architecture.
-For new development, use main.py or api.py instead.
+For new development, use scripts/main.py or scripts/api.py instead.
 """
 
 from src.data_loader import DataLoader

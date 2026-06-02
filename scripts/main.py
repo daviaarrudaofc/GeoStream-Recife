@@ -56,15 +56,15 @@ def main():
             output_file=visualizer.OUTPUT_DIR / "cluster_map.html",
         )
 
-        print("OK: Visualizations saved to outputs/")
+        print(f"OK: Visualizations saved to {visualizer.OUTPUT_DIR}")
 
         print("\n" + "=" * 50)
         print("GeoStream processing complete!")
         print("\nOutput files:")
-        print("   - outputs/choropleth_map.html")
-        print("   - outputs/cluster_map.html")
+        print(f"   - {visualizer.OUTPUT_DIR / 'choropleth_map.html'}")
+        print(f"   - {visualizer.OUTPUT_DIR / 'cluster_map.html'}")
         print("\nTo start the API:")
-        print("   python -m uvicorn api:app --reload")
+        print("   python -m uvicorn scripts.api:app --reload")
         print("\nAPI docs available at http://localhost:8000/docs")
 
     except Exception as e:

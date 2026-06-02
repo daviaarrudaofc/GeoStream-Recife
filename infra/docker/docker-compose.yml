@@ -1,19 +1,16 @@
-version: '3.8'
-
 services:
   geostream-api:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: ../..
+      dockerfile: infra/docker/Dockerfile
     container_name: geostream-api
     ports:
       - "8000:8000"
     environment:
       - LOG_LEVEL=info
     volumes:
-      - ./data:/app/data
-      - ./logs:/app/logs
-      - ./outputs:/app/outputs
+      - ../../data:/app/data
+      - ../../runtime:/app/runtime
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]

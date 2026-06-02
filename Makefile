@@ -2,6 +2,9 @@
 
 .PHONY: help install dev test lint format clean docker-build docker-up docker-down api cli
 
+PYTHON_FILES = src scripts tests
+DOCKER_COMPOSE = docker compose -f infra/docker/docker-compose.yml
+
 help:
 	@echo "GeoStream Recife - Available Commands"
 	@echo "====================================="
@@ -33,13 +36,13 @@ test-cov:
 	pytest tests/ -v --cov=src --cov-report=html
 
 lint:
-	flake8 src/ api.py cli.py main.py
-	black --check src/ api.py cli.py main.py
-	isort --check-only src/ api.py cli.py main.py
+	flake8 src scripts
+	black --check $(PYTHON_FILES)
+	isort --check-only $(PYTHON_FILES)
 
 format:
-	black src/ api.py cli.py main.py
-	isort src/ api.py cli.py main.py
+	black $(PYTHON_FILES)
+	isort $(PYTHON_FILES)
 
 clean:
 	find . -type f -name '*.pyc' -delete
@@ -52,30 +55,30 @@ clean:
 	find . -type d -name '*.egg-info' -delete
 
 api:
-	python -m uvicorn api:app --reload
+	python -m uvicorn scripts.api:app --reload
 
 cli:
-	python cli.py
+	python -m scripts.cli
 
 main:
-	python main.py
+	python -m scripts.main
 
 docker-build:
-	docker build -t geostream:latest .
+	docker build -f infra/docker/Dockerfile -t geostream:latest .
 
 docker-up:
-	docker-compose up -d
+	$(DOCKER_COMPOSE) up -d
 
 docker-down:
-	docker-compose down
+	$(DOCKER_COMPOSE) down
 
 docker-logs:
-	docker-compose logs -f geostream-api
+	$(DOCKER_COMPOSE) logs -f geostream-api
 
 docker-test:
-	docker-compose exec geostream-api pytest tests/ -v
+	$(DOCKER_COMPOSE) exec geostream-api pytest tests/ -v
 
 security:
-	bandit -r src/ api.py cli.py main.py
+	bandit -r src scripts
 
 all: format lint test

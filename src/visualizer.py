@@ -8,6 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 from src.config import GEO
+from src.config import OUTPUT_DIR as DEFAULT_OUTPUT_DIR
 from src.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -16,7 +17,7 @@ logger = setup_logger(__name__)
 class Visualizer:
     """Handles all visualization tasks."""
 
-    OUTPUT_DIR = Path(__file__).parent.parent / "outputs"
+    OUTPUT_DIR = DEFAULT_OUTPUT_DIR
 
     def __init__(self):
         """Initialize visualizer."""

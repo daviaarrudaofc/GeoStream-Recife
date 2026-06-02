@@ -2,10 +2,8 @@
 
 import logging
 import sys
-from pathlib import Path
 
-LOG_DIR = Path(__file__).parent.parent / "logs"
-LOG_DIR.mkdir(exist_ok=True)
+from src.config import LOG_DIR
 
 
 def setup_logger(name: str) -> logging.Logger:

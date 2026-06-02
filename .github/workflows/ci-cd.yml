@@ -40,14 +40,14 @@ jobs:
     
     - name: Lint with flake8
       run: |
-        flake8 src/ api.py cli.py --count --select=E9,F63,F7,F82 --show-source --statistics
-        flake8 src/ api.py cli.py --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 src/ scripts --count --select=E9,F63,F7,F82 --show-source --statistics
+        flake8 src/ scripts --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     
     - name: Check code format with black
-      run: black --check src/ api.py cli.py || true
+      run: black --check src/ scripts || true
     
     - name: Check imports with isort
-      run: isort --check-only src/ api.py cli.py || true
+      run: isort --check-only src/ scripts || true
     
     - name: Run tests with coverage
       run: |
@@ -74,6 +74,7 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: .
+        file: infra/docker/Dockerfile
         push: false
         load: true
         tags: geostream:latest
@@ -93,7 +94,7 @@ jobs:
     - name: Run Bandit security check
       run: |
         pip install bandit
-        bandit -r src/ api.py cli.py -f json -o bandit-report.json || true
+        bandit -r src/ scripts -f json -o bandit-report.json || true
     
     - name: Upload security report
       uses: actions/upload-artifact@v4

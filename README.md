@@ -19,6 +19,15 @@ DuckDB, FastAPI e visualizacoes interativas.
 GeoStream-Recife/
 |-- .github/workflows/ci-cd.yml
 |-- data/dados_recife.csv
+|-- infra/docker/
+|   |-- Dockerfile
+|   `-- docker-compose.yml
+|-- runtime/                  # gerado em execucao: logs, mapas e modelos
+|-- scripts/
+|   |-- api.py
+|   |-- cli.py
+|   |-- legacy_app.py
+|   `-- main.py
 |-- src/
 |   |-- config.py
 |   |-- data_loader.py
@@ -27,12 +36,9 @@ GeoStream-Recife/
 |   |-- visualizer.py
 |   `-- logger.py
 |-- tests/test_core.py
-|-- api.py
-|-- cli.py
-|-- main.py
 |-- requirements.txt
-|-- Dockerfile
-`-- docker-compose.yml
+|-- pyproject.toml
+`-- Makefile
 ```
 
 ## Instalacao local
@@ -56,23 +62,23 @@ pip install -r requirements.txt
 Rodar o pipeline completo:
 
 ```bash
-python main.py
+python -m scripts.main
 ```
 
 Usar a CLI:
 
 ```bash
-python cli.py info
-python cli.py process
-python cli.py cluster --n-clusters 3
-python cli.py analyze
-python cli.py api
+python -m scripts.cli info
+python -m scripts.cli process
+python -m scripts.cli cluster --n-clusters 3
+python -m scripts.cli analyze
+python -m scripts.cli api
 ```
 
 Iniciar a API diretamente:
 
 ```bash
-python -m uvicorn api:app --reload
+python -m uvicorn scripts.api:app --reload
 ```
 
 Depois acesse:
@@ -84,13 +90,13 @@ Depois acesse:
 ## Docker
 
 ```bash
-docker-compose up --build
+docker compose -f infra/docker/docker-compose.yml up --build
 ```
 
 Ou:
 
 ```bash
-docker build -t geostream:latest .
+docker build -f infra/docker/Dockerfile -t geostream:latest .
 docker run -p 8000:8000 geostream:latest
 ```
 
@@ -112,10 +118,10 @@ Se o arquivo nao existir, o `DataLoader` cria uma amostra minima no mesmo caminh
 ```bash
 pytest tests/ -v
 pytest tests/ --cov=src --cov-report=term
-flake8 src/ api.py cli.py
-black --check src/ api.py cli.py
-isort --check-only src/ api.py cli.py
-bandit -r src/ api.py cli.py
+flake8 src scripts
+black --check src scripts
+isort --check-only src scripts
+bandit -r src scripts
 ```
 
 ## CI/CD

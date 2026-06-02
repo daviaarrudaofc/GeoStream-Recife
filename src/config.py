@@ -6,11 +6,17 @@ from typing import Optional
 
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
-MODELS_DIR = PROJECT_ROOT / "models"
+RUNTIME_DIR = PROJECT_ROOT / "runtime"
+LOG_DIR = RUNTIME_DIR / "logs"
+MODELS_DIR = RUNTIME_DIR / "models"
+OUTPUT_DIR = RUNTIME_DIR / "outputs"
 
 # Create runtime directories when the package is imported.
 DATA_DIR.mkdir(exist_ok=True)
+RUNTIME_DIR.mkdir(exist_ok=True)
+LOG_DIR.mkdir(exist_ok=True)
 MODELS_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR.mkdir(exist_ok=True)
 
 
 @dataclass
